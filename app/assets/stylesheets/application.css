@@ -8,3 +8,140 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #642c41;
+}
+
+ .container {
+  display: flex;
+  /*height: 100vh; /* контроль высоты*/
+  width: 95%;
+}
+.sidebar {
+  width: 100px; /* контроль шиирены */
+  background: rgb(116, 109, 116);
+  color: white;
+  padding: 20px;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2); /* боковая тень */
+  height: 75vh;
+  border-radius: 10px;
+  width: 10%;
+}
+a {
+  text-decoration: none; /* убрать подчёркивание */
+  color: black;
+}
+
+a:hover {
+  color: rgb(255, 0, 255); /* эфект при наведении */
+}
+
+ .site-header {
+  display: grid;
+  justify-content: center;
+  background: white;
+  gap: 20px;
+  width: 90%;
+  margin: 0 auto;
+  border: 2px solid rgb(0, 0, 0);
+}
+ .main-container{
+  display: grid;
+  justify-content: center;
+  background: white;
+  gap: 20px;
+  width: 80%;
+  margin: 0 auto;
+  border: 3px solid rgb(17, 16, 17);
+  flex: 1;
+  padding: 10px;
+ }
+ .clothing-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 1 колонка по умолчанию */
+  gap: 20px; /* отступы между блоками */
+  justify-content: center; /* центр грида */
+  padding: 20px;
+}
+
+.clothing-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.responsive-container {
+  width: 200px; /* Фиксированная ширина */
+  height: 250px; /* Фиксированная высота */
+  border: 3px solid black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.responsive-image {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; /* Обрезает и заполняет контейнер */
+  border-radius: 10px;
+}
+
+.clothing-name {
+  width: 100%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+  /*background: rgba(0, 0, 0, 0.1);*/
+}
+.clothing-prise {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  /*background: rgba(0, 0, 0, 0.1);*/
+}
+
+/* Медиа-запросы для адаптивности */
+@media (min-width: 600px) {
+  .clothing-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+  }
+}
+
+@media (min-width: 900px) {
+  .clothing-container {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+  }
+}
+
+.background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-attachment: fixed;
+}

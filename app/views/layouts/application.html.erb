@@ -19,10 +19,33 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class= "background" style="background-image: url('<%= asset_path "background.jpg" %>');">
+    <header class="site-header">
+    <%= link_to clothings_path do%>
+    <div>Elle Marko</div>
+    <%end%>
+  </header>
+<div class="container">
+  <div class="sidebar">
+      <div ><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">IMPORTANT</a></div>
+      <div><%= link_to "T-Shirts", t_shirts_clothings_path %></div>
+      <div><%= link_to "Headwear", headwear_clothings_path %></div>
+      <div><%= link_to "Shoes", shoes_clothings_path %></div>
+      <div><%= link_to "Jackets", jackets_clothings_path %></div>
+      <div><%= link_to "Sweaters", sweaters_clothings_path %></div>
+      <div><%= link_to "Business Suits", business_suits_clothings_path %></div>
+  </div>
+  <main class="main-container">
+    <p><%= yield %></p>
+  </main>
+</div>
+  <footer>
+    <p>&copy; fuck you </p>
+  </footer>
+
   </body>
 </html>

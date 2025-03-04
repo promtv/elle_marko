@@ -1,0 +1,18 @@
+business_suits
+<div class="clothing-container">
+<% @business_suits.each do |business_suits| %>
+  <%= link_to clothing_path(business_suits.id) do %>
+    <div class="clothing-item">
+      <div class="responsive-container">
+        <img class="responsive-image" src="<%= business_suits.image_url %>" alt="Clothing Image"/>
+       <div class="clothing-name">
+        <%= business_suits.name %>
+       </div>
+       <div class="clothing-prise">
+        <%= business_suits.price%>$
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
