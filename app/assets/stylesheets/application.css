@@ -8,6 +8,39 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ .background_category {
+  min-width: 300px;
+  min-height: 200px;
+  background-size: cover; /* Растягивает фон на весь контейнер */
+  background-position: center; /* Центрирует изображение */
+  background-repeat: no-repeat; /* Убирает повторение */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px; /* Закругляет углы */
+  border: 2px solid rgb(0, 0, 0);
+  position: relative;
+}
+
+/* Стили для ссылки */
+.container_category {
+  position: absolute;
+  right: 5px; /* Отступ справа */
+  bottom: 5px; /* Отступ снизу */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5); /* Затемненный фон для читаемости текста */
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease; /* Плавный эффект при наведении */
+}
+
+.background_category:hover .container_category {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+
  .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -25,7 +58,6 @@
 
  .container {
   display: flex;
-  /*height: 100vh; /* контроль высоты*/
   width: 95%;
 }
 .sidebar {

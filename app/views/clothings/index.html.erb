@@ -1,24 +1,24 @@
-<div class="clothing-container">
-<%= link_to "T-shirts", t_shirts_clothings_path, class: "btn" %>
-<%= link_to "Headwear", headwear_clothings_path, class: "btn" %>
-<%= link_to "Shoes", shoes_clothings_path, class: "btn" %>
-<%= link_to "Jackets", jackets_clothings_path, class: "btn" %>
-<%= link_to "Sweaters", sweaters_clothings_path, class: "btn" %>
-<%= link_to "Business Suits", business_suits_clothings_path, class: "btn" %>
-
-  <% @clothings.each do |clothing| %>
-  <%= link_to clothing_path(clothing.id) do %>
-    <div class="clothing-item">
-      <div class="responsive-container">
-        <img class="responsive-image" src="<%= clothing.image_url %>" alt="Clothing Image"/>
-       <div class="clothing-name">
-        <%= clothing.name %>
-       </div>
-       <div class="clothing-prise">
-        <%= clothing.price%>$
-        </div>
-      </div>
-    </div>
-    <% end %>
-  <% end %>
+<div>
+<%= link_to t_shirts_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('t-shirts.jpg')}); position: relative;" do %>
+  <span class="container_category">T-shirts</span>
+<% end %>
 </div>
+<%= link_to headwear_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('headwear.jpg')}); position: relative;" do %>
+  <span class="container_category">Headwear</span>
+<% end %>
+
+<%= link_to shoes_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('shoes.jpg')}); position: relative;" do %>
+  <span class="container_category">Shoes</span>
+<% end %>
+
+<%= link_to jackets_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('jackets.jpg')}); position: relative;" do %>
+  <span class="container_category">Jackets</span>
+<% end %>
+
+<%= link_to sweaters_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('sweaters.jpg')}); position: relative;" do %>
+  <span class="container_category">Sweaters</span>
+<% end %>
+
+<%= link_to business_suits_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('business_suits.jpg')}); position: relative;" do %>
+  <span class="container_category">Business Suits</span>
+<% end %>
