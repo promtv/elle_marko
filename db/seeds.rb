@@ -52,3 +52,14 @@ Clothings.create(
   image_url: "/images/clothings/t-shirts/polo_ua_matchplay.jpg",
   for_whom: "for_men"
 )
+Clothings.create(
+  classification: "t-shirts",
+  brand: "underarmour. ",
+  name: "Polo UA Matchplay  ",
+  price: "40",
+  material: "94 % polyester / 6 % élasthanne",
+  size: "XL,M,L",
+  description: "",
+  image_url: "/images/clothings/t-shirts/polo_ua_matchplay.jpg",
+  for_whom: "for_men"
+)

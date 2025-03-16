@@ -1,4 +1,7 @@
 <div>
+<%= button_to add_clothings_cart_path(@clothings.id), class:""  do%>
+ Add to cart
+ <% end %>
 <img class="responsive-image" src=<%= @clothings.image_url %> />
 <div class="clothing-name">
 name: <%= @clothings.name %>

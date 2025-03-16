@@ -1,0 +1,74 @@
+.clothing-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 колонка по умолчанию */
+    gap: 20px; /* отступы между блоками */
+    justify-content: center; /* центр грида */
+    padding: 20px;
+  }
+
+  .clothing-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .responsive-container {
+    width: 200px; /* Фиксированная ширина */
+    height: 250px; /* Фиксированная высота */
+    border: 3px solid black;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .responsive-image {
+    width: 100%;
+    height: 80%;
+    object-fit: cover; /* Обрезает и заполняет контейнер */
+    border-radius: 10px;
+  }
+
+  .clothing-name {
+    width: 100%;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    /*background: rgba(0, 0, 0, 0.1);*/
+  }
+  .clothing-prise {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    /*background: rgba(0, 0, 0, 0.1);*/
+  }
+
+  /* Медиа-запросы для адаптивности */
+  @media (min-width: 600px) {
+    .clothing-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    }
+  }
+  @media (min-width: 900px) {
+    .clothing-container {
+      grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    }
+  }
+@media (min-width: 1200px) {
+    .clothing-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    }
+}

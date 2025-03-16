@@ -15,6 +15,10 @@ Rails.application.routes.draw do
       get "headwear", to: "clothings#headwear"
     end
   end
+  resource :cart, only: [] do
+    get "/" => "carts#show"
+    post "add/:clothings_id" => "carts#add", as: :add_clothings
+  end
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

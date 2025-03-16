@@ -1,0 +1,28 @@
+.background {
+    background-size: cover; /* Растягивает изображение на всю ширину */
+    background-position: center; /* Позиционирует изображение по центру */
+    background-repeat: no-repeat; /* Запрещает повторение изображения */
+    height: 100vh; /* Растягивает изображение на всю высоту */
+    background-attachment: fixed; /* Фиксирует изображение на месте */
+  }
+
+a {
+    text-decoration: none; /* убрать подчёркивание */
+    color: black; /* цвет текста */
+}
+
+
+
+.main-container {
+    display: grid; /* Размещаем элементы в виде сетки */
+    grid-template-columns: 1fr; /* Гарантирует, что контейнер будет растягиваться */
+
+    background: white; /* Цвет фона */
+    gap: 20px; /* Добавляет отступ между элементами */
+    width: 100%; /* Растягивается на всю ширину */
+    max-width: 1200px; /* Ограничивает максимальную ширину */
+    margin: 0 auto; /* Выравнивает по центру */
+
+    border: 3px solid rgb(17, 16, 17); /* Добавляет рамку */
+    padding: 10px; /* Отступы внутри блока */
+}

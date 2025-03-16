@@ -1,0 +1,24 @@
+.cart_style {
+    position: absolute;
+    right: 1px; /* Прижимаем к правому краю */
+    bottom: 1px; /*расположение сверху */
+    border: 1px solid black; /* рамка */
+    border-radius: 10px;    /* скругление углов */
+    padding: 2px; /* отступ внутри */
+}
+
+.title_style {
+    text-align: center; /* выравнивание по центру */
+    font-size: 20px; /* размер шрифта */
+    font-weight: bold; /* жирный шрифт */
+    margin: 10px 0; /* отступы сверху и снизу */
+}
+.site-header {
+    display: grid; /* сетка */
+    background: white; /* цвет фона */
+    gap: 20px; /* расстояние между элементами */
+    width: 90%; /* ширина */
+    margin: 0 auto; /* отступы */
+    border: 2px solid rgb(0, 0, 0); /* рамка */
+    position: relative; /* позиция */
+  }
