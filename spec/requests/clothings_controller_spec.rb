@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "ClothingsControllers", type: :request do
+  let!(:clothings) { FactoryBot.create(:clothings) }
   describe "GET /clothings" do
     it "проверка роутов" do
       get "/clothings"
@@ -18,6 +19,7 @@ RSpec.describe "ClothingsControllers", type: :request do
       get "/clothings/t_shirts"
       expect(response).to have_http_status(:success)
       expect(response.body).to include("t_shirts")
+      expect(response.body).to include(clothings.name)
     end
   end
   describe "GET /clothings/headwear" do
