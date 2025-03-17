@@ -89,7 +89,7 @@ jobs:
           path: ${{ github.workspace }}/tmp/screenshots
           if-no-files-found: ignore
 
-    rspec:
+rspec:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
