@@ -10,6 +10,9 @@ class ClothingsController < ApplicationController
   end
   def shoes
     @shoes = Clothings.where(classification: "shoes")
+    if params[:for_whom].present?
+      @shoes = @shoes.where(for_whom: params[:for_whom]) # Фильтруем по category, если он передан
+    end
   end
   def jackets
     @jackets = Clothings.where(classification: "jackets")

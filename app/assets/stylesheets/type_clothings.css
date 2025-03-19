@@ -72,3 +72,24 @@
     grid-template-columns: repeat(4, 1fr); /* 4 колонки */
     }
 }
+  .filter-box {
+    display: flex;
+    justify-content: center;  /* Центрирует по горизонтали */
+    align-items: center;      /* Центрирует по вертикали */
+    text-align: center;       /* Если несколько строк, текст останется по центру */
+    width: 90px;
+    height: 40px;
+    background-color: lightgray;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    border-radius: 10px;
+    margin: 5px auto;
+    margin-top: -50px
+  }
+
+  .filter-box:hover {
+    background-color: gray;
+    color: white;
+  }
