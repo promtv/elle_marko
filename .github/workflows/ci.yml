@@ -102,4 +102,4 @@ jobs:
           bundler-cache: true
 
       - name: Run RSpec unit tests
-        run: bin/rspec
+        run: rspec

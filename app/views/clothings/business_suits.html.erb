@@ -1,3 +1,9 @@
+<div style="display: flex; gap: 20px;">
+  <%= link_to "for_men", business_suits_clothings_path(for_whom: "for_men"), class: "filter-box" %>
+  <%= link_to "for_women", business_suits_clothings_path(for_whom: "for_women"), class: "filter-box" %>
+  <%= link_to "unisex", business_suits_clothings_path(for_whom: "unisex"), class: "filter-box" %>
+  <%= link_to "all", business_suits_clothings_path, class: "filter-box" %>
+</div>
 business_suits
 <div class="clothing-container">
 <% @business_suits.each do |business_suits| %>

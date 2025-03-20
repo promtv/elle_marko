@@ -1,22 +1,21 @@
-.container_for_sidebar {
-    display: flex;  /* Размещаем элементы в строку */
-    width: 95%; /* Контроль ширины */
-}
-
 .sidebar {
-    width: 12%; /* Контроль ширины */
+    width: 10%; /* Контроль ширины */
     color: white; /* Цвет текста */
-    padding: 20px; /* Отступы внутри блока */
+    padding: 10px; /* Отступы внутри блока */
     display: flex; /* Размещаем элементы в строку */
     flex-direction: column; /* Размещаем элементы в колонку */
-    gap: 50px; /* Добавляем отступ между элементами */
+    gap: 5px; /* Добавляем отступ между элементами */
 }
 .sidebar_link_style {
-    color: white; /* Цвет текста */
-    font-size: 10px; /* Размер шрифта */
+    display: block;
+    width: 100%; /* Минимальная ширина */
+    min-height: 30px; /* Минимальная высота */
+    text-align: center; /* Выравнивание по центру */
+    color: rgb(255, 255, 255); /* Цвет текста */
+    font-size: 13px; /* Размер шрифта */
     font-weight: bold; /* Жирный шрифт */
     background: rgba(0, 0, 0, 0.5); /* Затемненный фон для читаемости текста */
     padding: 5px; /* Отступы внутри блока */
-    border-radius: 5px;     /* Скругление углов */
+    border-radius: 3px;     /* Скругление углов */
     transition: background 0.3s ease; /* Плавный эффект при наведении */
   }

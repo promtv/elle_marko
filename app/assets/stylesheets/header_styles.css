@@ -17,7 +17,7 @@
     display: grid; /* сетка */
     background: white; /* цвет фона */
     gap: 20px; /* расстояние между элементами */
-    width: 90%; /* ширина */
+    width: 99%; /* ширина */
     margin: 0 auto; /* отступы */
     border: 2px solid rgb(0, 0, 0); /* рамка */
     position: relative; /* позиция */

@@ -32,15 +32,15 @@
      <span class="cart_style"> Cart (<%= cookies.signed[:cart].values.sum %>)</span>
   <%end%>
   </header>
-<div class="container_for_sidebar">
+<div class="container_for_sidebar_and_main_conteiner ">
   <div class="sidebar">
-      <div class="sidebar_link_style "><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">IMPORTANT</a></div>
       <div><%= link_to "T-Shirts", t_shirts_clothings_path, class: "sidebar_link_style" %></div>
       <div><%= link_to "Headwear", headwear_clothings_path, class: "sidebar_link_style" %></div>
       <div><%= link_to "Shoes", shoes_clothings_path, class: "sidebar_link_style" %></div>
       <div><%= link_to "Jackets", jackets_clothings_path, class: "sidebar_link_style" %></div>
       <div><%= link_to "Sweaters", sweaters_clothings_path, class: "sidebar_link_style" %></div>
       <div><%= link_to "Business-Suits", business_suits_clothings_path, class: "sidebar_link_style" %></div>
+      <div class="sidebar_link_style "><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">IMPORTANT</a></div>
   </div>
   <main class="main-container">
     <p><%= yield %></p>

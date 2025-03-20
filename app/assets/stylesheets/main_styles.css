@@ -26,3 +26,7 @@ a {
     border: 3px solid rgb(17, 16, 17); /* Добавляет рамку */
     padding: 10px; /* Отступы внутри блока */
 }
+.container_for_sidebar_and_main_conteiner {
+    display: flex;  /* Размещаем элементы в строку */
+    width: 90%; /* Контроль ширины */
+}
