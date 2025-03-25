@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+ruby "3.3.6"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -54,6 +56,11 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "capistrano", require: false
+  gem "capistrano-rails", require: false
+  gem 'capistrano-rvm', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma', require: false
 end
 
 group :test do

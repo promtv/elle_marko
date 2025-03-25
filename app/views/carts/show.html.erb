@@ -1,3 +1,17 @@
-<% @clothings.each do |clothings, amount|%>
-<%= clothings.name%> <%=amount%>
-<%end%>
+<% price = 0 %>
+<% element = 0 %>
+
+<% @clothings.each do |clothings, amount| %>
+  <% item_prise = amount * clothings.price %>
+  <% price += item_prise %>
+  <% element += amount %>
+
+  <div class="clothing_conteiner_for_order">
+    <img class="image_of_order" src="<%= clothings.image_url %>" >
+    <%= clothings.name %> (<%= amount %>) = <%= item_prise %>$
+  </div>
+<% end %>
+
+<div>
+  PRISE (<%=element%>) <%= price %>$
+</div>
