@@ -3,7 +3,7 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server "16.171.196.168", user: "ubuntu", roles: %w{app}
+server "16.171.196.168", user: "ubuntu", roles: %w[app]
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
@@ -17,7 +17,7 @@ server "16.171.196.168", user: "ubuntu", roles: %w{app}
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{ubuntu@16.171.196.168}
+role :app, %w[ubuntu@16.171.196.168]
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
 
@@ -25,32 +25,32 @@ set :migration_role, :app
 set :puma_role, :app
 set :migration_servers, -> { primary(fetch(:migration_role)) }
 
-set :assets_roles, [:app]
+set :assets_roles, [ :app ]
 set :default_env, {
-  'RAILS_ENV' => 'production', 'PIDFILE' => "#{fetch(:deploy_to)}/shared/tmp/pids/puma.pid"
+  "RAILS_ENV" => "production", "PIDFILE" => "#{fetch(:deploy_to)}/shared/tmp/pids/puma.pid"
 }
-# Configuration
-# =============
-# You can set any configuration variable like in config/deploy.rb
-# These variables are then only loaded and set in this stage.
-# For available Capistrano configuration variables see the documentation page.
-# http://capistranorb.com/documentation/getting-started/configuration/
-# Feel free to add new variables to customise your setup.
+ # Configuration
+ # =============
+ # You can set any configuration variable like in config/deploy.rb
+ # These variables are then only loaded and set in this stage.
+ # For available Capistrano configuration variables see the documentation page.
+ # http://capistranorb.com/documentation/getting-started/configuration/
+ # Feel free to add new variables to customise your setup.
 
 
 
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult the Net::SSH documentation.
-# http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
-#
-# Global options
-# --------------
+ # Custom SSH Options
+ # ==================
+ # You may pass any option but keep in mind that net/ssh understands a
+ # limited set of options, consult the Net::SSH documentation.
+ # http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start
+ #
+ # Global options
+ # --------------
  set :ssh_options, {
-   keys: %w(~/.ssh/elle-marko.pem),
-#    forward_agent: false,
-#    auth_methods: %w(password)
+   keys: %w[~/.ssh/elle-marko.pem]
+   #    forward_agent: false,
+   #    auth_methods: %w(password)
  }
 #
 # The server-based syntax can be used to override options:

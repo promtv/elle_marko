@@ -5,7 +5,7 @@ set :application, "my_app_name"
 set :repo_url, "https://github.com/promtv/elle_marko.git"
 
 # Default branch is :master
-ask :branch, 'main'
+ask :branch, "main"
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/ubuntu/elle_marko"
@@ -21,14 +21,14 @@ set :deploy_to, "/home/ubuntu/elle_marko"
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/master.key', 'storage/production.sqlite3'
+append :linked_files, "config/master.key", "storage/production.sqlite3"
 
 namespace :deploy do
   namespace :check do
     before :linked_files, :set_master_key do
       on roles(:app) do
         unless test("[ -f #{shared_path}/config/master.key ]")
-          upload! 'config/master.key', "#{shared_path}/config/master.key"
+          upload! "config/master.key", "#{shared_path}/config/master.key"
         end
       end
     end
@@ -36,7 +36,7 @@ namespace :deploy do
 end
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "vendor/bundle", ".bundle", "public/system", "public/uploads"
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
