@@ -22,6 +22,7 @@ role :app, %w{ubuntu@16.171.196.168}
 # role :db,  %w{deploy@example.com}
 
 set :migration_role, :app
+set :puma_role, :app
 set :migration_servers, -> { primary(fetch(:migration_role)) }
 
 set :assets_roles, [:app]
