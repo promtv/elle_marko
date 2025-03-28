@@ -20,6 +20,13 @@ Rails.application.routes.draw do
     post "add/:clothings_id" => "carts#add", as: :add_clothings
   end
 
+  get "/auth/auth0", to: redirect("/auth/auth0/callback") # Маршрут для аутентификации
+  get "/auth/auth0/callback", to: "auth0#callback" # Обработка успешного входа
+  get "/auth/failure", to: "auth0#failure" # Обработка ошибок входа
+  get "/auth/logout", to: "auth0#logout" # Выход из системы
+
+  get "/dashboard", to: "dashboard#show"
+
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker

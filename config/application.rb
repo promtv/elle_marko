@@ -8,6 +8,8 @@ Bundler.require(*Rails.groups)
 
 module ElleMarko
   class Application < Rails::Application
+    config.auth0 = config_for(:auth0)  # Load the auth0.yml configuration file
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
 
