@@ -25,6 +25,8 @@
 
   <body class= "background" style="background-image: url('<%= asset_path "background.jpg" %>');">
     <header class="site-header">
+    <%= link_to 'Login', '/auth/auth0', method: :post %>
+    <%= link_to 'Logout', 'auth/logout', method: :get %>
     <%= link_to clothings_path do%>
     <div class= "title_style">Elle Marko</div>
     <%end%>
