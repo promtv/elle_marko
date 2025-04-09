@@ -25,6 +25,13 @@
 
   <body class= "background" style="background-image: url('<%= asset_path "background.jpg" %>');">
     <header class="site-header">
+    <% if session[:userinfo] %>
+    <p><strong>name:</strong> <%= session[:userinfo]["info"]["name"] %></p>
+    <%= link_to "logout", "/auth/logout" %>
+    <% else %>
+    <p>not autorize</p>
+    <%= link_to "login", "/auth/auth0" %>
+    <% end %>
     <%= link_to clothings_path do%>
     <div class= "title_style">Elle Marko</div>
     <%end%>

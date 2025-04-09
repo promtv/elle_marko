@@ -70,3 +70,6 @@ group :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
 end
+
+gem "omniauth-auth0"
+gem "omniauth-rails_csrf_protection", "~> 1.0"

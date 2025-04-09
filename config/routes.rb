@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get "/dashboard", to: "dashboard#show"
+  get "/auth/auth0/callback" => "auth0#callback"
+  get "/auth/failure" => "auth0#failure"
+  get "/auth/logout" => "auth0#logout"
+  get "/auth/redirect", to: redirect("/auth/auth0")
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
