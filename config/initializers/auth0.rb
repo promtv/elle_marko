@@ -4,9 +4,7 @@ OmniAuth.config.silence_get_warning = true
 Rails.application.config.middleware.use OmniAuth::Builder do
   auth0_config = Rails.application.credentials.dig(:auth0)
 
-  if auth0_config.blank?
-    raise "Auth0 configuration is missing! Please check your credentials."
-  end
+  raise "Missing Auth0 credentials!" if auth0_config.blank?
 
   provider(
     :auth0,
