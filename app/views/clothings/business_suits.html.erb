@@ -10,7 +10,9 @@ business_suits
   <%= link_to clothing_path(business_suits.id) do %>
     <div class="clothing-item">
       <div class="responsive-container">
-        <img class="responsive-image" src="<%= business_suits.image_url %>" alt="Clothing Image"/>
+       <% if business_suits.image.attached? %>
+      <%= image_tag business_suits.image,class: "responsive-image" %>
+      <% end %>
        <div class="clothing-name">
         <%= business_suits.name %>
        </div>

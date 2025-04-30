@@ -1,0 +1,32 @@
+<h1>Редактировать одежду</h1>
+
+<%= form_with model: @clothing, local: true do |form| %>
+  <%= form.label :classification %>
+  <%= form.select :classification, ['headwear', 'shoes', 't-shirts', 'jackets', 'sweaters', 'business_suits'] %><br>
+
+  <%= form.label :brand %>
+  <%= form.text_field :brand %><br>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %><br>
+
+  <%= form.label :price %>
+  <%= form.number_field :price %><br>
+
+  <%= form.label :material %>
+  <%= form.text_field :material %><br>
+
+  <%= form.label :size %>
+  <%= form.text_field :size %><br>
+
+  <%= form.label :for_whom %>
+  <%= form.select :for_whom, ['for_men', 'for_women', 'unisex'] %><br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description %><br>
+
+  <%= form.label :image %>
+  <%= form.file_field :image %><br>
+
+  <%= form.submit "Сохранить изменения" %>
+<% end %>

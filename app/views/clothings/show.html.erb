@@ -1,24 +1,31 @@
 <div>
-<%= button_to add_clothings_cart_path(@clothings.id), class:""  do%>
+<%= button_to add_clothings_cart_path(@clothing.id), class:""  do%>
  Add to cart
  <% end %>
-<img class="responsive-image" src=<%= @clothings.image_url %> />
+ <%= form_with model: @clothing, method: :delete, local: true do %>
+  <%= submit_tag "Удалить", data: { confirm: "Точно удалить?" } %>
+<% end %>
+<%= link_to "Редактировать", edit_clothing_path(@clothing) %>
+<% if @clothing.image.attached? %>
+      <%= image_tag @clothing.image,class: "responsive-image" %>
+      <% end %>
+
 <div class="clothing-name">
-name: <%= @clothings.name %>
+name: <%= @clothing.name %>
 </div>
 <div>
-brand: <%= @clothings.brand %>
+brand: <%= @clothing.brand %>
 </div>
 <div>
-size: <%= @clothings.size %>
+size: <%= @clothing.size %>
 </div>
 <div>
-prise: <%= @clothings.price %>$
+prise: <%= @clothing.price %>$
 </div>
 <div>
-material_type: <%= @clothings.material %>
+material_type: <%= @clothing.material %>
 </div>
 <div>
-description: <%= @clothings.description %>
+description: <%= @clothing.description %>
 </div>
 </div>

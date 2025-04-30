@@ -10,7 +10,9 @@ headwear
   <%= link_to clothing_path(headwear.id) do %>
     <div class="clothing-item">
       <div class="responsive-container">
-        <img class="responsive-image" src="<%= headwear.image_url %>" alt="Clothing Image"/>
+    <% if headwear.image.attached? %>
+      <%= image_tag headwear.image,class: "responsive-image" %>
+      <% end %>
        <div class="clothing-name">
         <%= headwear.name %>
        </div>
