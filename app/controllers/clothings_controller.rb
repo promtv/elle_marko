@@ -1,9 +1,14 @@
 class ClothingsController < ApplicationController
+  include Secured
+
+  before_action :require_admin!, only: [ :destroy, :edit, :update, :create, :new ]
+
   def index
     @clothings = Clothing.all
   end
   def show
     @clothing = Clothing.find(params[:id])
+    @average_rating = @clothing.reviews.average(:rating)&.round(1) || 0
   end
   def create
     @clothing = Clothing.new(clothing_params)
@@ -26,7 +31,7 @@ class ClothingsController < ApplicationController
   def edit
     @clothing = Clothing.find(params[:id])
   end
-  
+
   def update
     @clothing = Clothing.find(params[:id])
     if @clothing.update(clothing_params)
@@ -35,7 +40,7 @@ class ClothingsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
-  
+
   def t_shirts
     @t_shirts = Clothing.where(classification: "t-shirts")
     if params[:for_whom].present?
@@ -73,7 +78,7 @@ class ClothingsController < ApplicationController
     end
   end
   private
-  
+
   def clothing_params
     params.require(:clothing).permit(
       :classification, :brand, :name, :price, :material, :size,

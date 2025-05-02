@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :clothings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
+    resources :reviews, only: [ :create, :destroy ]
     collection do
       get "t_shirts", to: "clothings#t_shirts"
       get "shoes", to: "clothings#shoes"

@@ -1,5 +1,6 @@
 class Clothing < ApplicationRecord
  has_one_attached :image
+ has_many :reviews, dependent: :destroy
  validates :classification, presence: true
  validates :brand, presence: true
  validates :name, presence: true

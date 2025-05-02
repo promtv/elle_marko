@@ -2,14 +2,17 @@
 <%= button_to add_clothings_cart_path(@clothing.id), class:""  do%>
  Add to cart
  <% end %>
+<% if session[:userinfo]&.dig('roles')&.include?('admin') %>
  <%= form_with model: @clothing, method: :delete, local: true do %>
-  <%= submit_tag "Удалить", data: { confirm: "Точно удалить?" } %>
+  <%= submit_tag "Удалить", data: { confirm: "Точно удалить?" }, class: "btn" %>
 <% end %>
-<%= link_to "Редактировать", edit_clothing_path(@clothing) %>
+<%= link_to "Redact", edit_clothing_path(@clothing), class: "btn" %>
+
+
 <% if @clothing.image.attached? %>
       <%= image_tag @clothing.image,class: "responsive-image" %>
       <% end %>
-
+<% end %>
 <div class="clothing-name">
 name: <%= @clothing.name %>
 </div>
@@ -29,3 +32,45 @@ material_type: <%= @clothing.material %>
 description: <%= @clothing.description %>
 </div>
 </div>
+
+<div class="star-rating">
+  <div class="stars-outer">
+    <div class="stars-inner" style="width: <%= (@average_rating.to_f / 5 * 100).round %>%"></div>
+  </div>
+  <span>(<%= @average_rating %>/5)</span>
+</div>
+<h2>Отзывы</h2>
+<% if session[:userinfo] %>
+<%= form_with(url: clothing_reviews_path(@clothing), model: Review.new, local: true) do |form| %>
+  <div>
+    <%= form.label :content, "Отзыв" %><br>
+    <%= form.text_area :content %>
+  </div>
+  <div>
+  <div>
+  <%= form.label :rating, "Оценка" %><br>
+  <%= form.select :rating, options_for_select(1..5), prompt: "Выберите оценку" %>
+</div>
+    <%= form.submit "Оставить отзыв" %>
+  </div>
+<% end %>
+<% else %>
+  <p>Чтобы оставить отзыв, <%= link_to "войдите", "/auth/auth0" %></p>
+<% end %>
+
+<% @clothing.reviews.each do |review| %>
+  <p>
+    <strong><%= review.user_name %></strong>
+
+    <div class="star-rating">
+      <div class="stars-outer">
+        <div class="stars-inner" style="width: <%= (review.rating.to_f / 5 * 100).round %>%"></div>
+      </div>
+      <span>(<%= review.rating %>/5)</span>
+    </div>
+  </p>
+  <p><%= review.content %></p>
+  <% if session[:userinfo]&.dig('roles')&.include?('admin') %>
+  <%= button_to "Удалить", clothing_review_path(@clothing, review), method: :delete, data: { confirm: "Ты уверен?" } %>
+   <% end %>
+<% end %>

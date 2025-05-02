@@ -1,12 +1,12 @@
 class Auth0Controller < ApplicationController
   def callback
     auth_info = request.env["omniauth.auth"]
-    namespace = 'https://yourapp.example.com'
+    namespace = "https://yourapp.example.com"
     session[:userinfo] = {
       uid: auth_info["uid"],
       info: auth_info["info"],
       extra: auth_info["extra"],
-      roles: auth_info['extra']['raw_info']["#{namespace}/roles"]
+      roles: auth_info["extra"]["raw_info"]["#{namespace}/roles"]
     }
     redirect_to session.delete(:redirect_path) || "/dashboard"
   end

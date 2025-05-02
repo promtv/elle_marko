@@ -16,6 +16,7 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
@@ -35,9 +36,9 @@
     <p>not autorize</p>
     <%= link_to "login", "/auth/auth0" %>
     <% end %>
-    <%= link_to clothings_path do%>
-    <div class= "title_style">Elle Marko</div>
-    <%end%>
+   <div class="title_wrapper">
+  <%= link_to "Elle Marko", clothings_path, class: "title_style" %>
+   </div>
     <%= link_to cart_path do %>
      <span class="cart_style"> Cart (<%= cookies.signed[:cart].values.sum %>)</span>
   <%end%>
