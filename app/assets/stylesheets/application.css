@@ -8,3 +8,60 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ .star-rating {
+    display: inline-block;
+    font-size: 1.2em;
+    position: relative;
+  }
+  
+  .stars-outer {
+    position: relative;
+    display: inline-block;
+    color: #ccc;
+  }
+  
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: gold;
+  }
+  
+  .stars-outer::before,
+  .stars-inner::before {
+    content: "★★★★★";
+    font-family: Arial, sans-serif;
+  }
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000; /* небесно-синий */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #2779bd; /* чуть темнее при наведении */
+  }
+  .title_style {
+    font-family: 'Parisienne', cursive;
+    font-size: 50px;
+    color: #4b4b4b;
+    display: inline-block;
+    margin-top: 0;
+  }
+  .title_style:hover {
+    color: #3490dc; /* мягкий голубой при наведении */
+  }
+  .title_wrapper {
+    text-align: center;
+    margin-top: -110px;
+    padding-top: 0;
+  }
