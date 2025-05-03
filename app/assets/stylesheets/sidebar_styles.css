@@ -7,12 +7,13 @@
     gap: 5px; /* Добавляем отступ между элементами */
 }
 .sidebar_link_style {
+    font-family: 'Parisienne', cursive; /* Шрифт */
     display: block;
     width: 100%; /* Минимальная ширина */
     min-height: 30px; /* Минимальная высота */
     text-align: center; /* Выравнивание по центру */
     color: rgb(255, 255, 255); /* Цвет текста */
-    font-size: 13px; /* Размер шрифта */
+    font-size: 20px; /* Размер шрифта */
     font-weight: bold; /* Жирный шрифт */
     background: rgba(0, 0, 0, 0.5); /* Затемненный фон для читаемости текста */
     padding: 5px; /* Отступы внутри блока */

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :clothings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     resources :reviews, only: [ :create, :destroy ]
     collection do
+      get "admin_page", to: "clothings#admin_page"
       get "t_shirts", to: "clothings#t_shirts"
       get "shoes", to: "clothings#shoes"
       get "jackets", to: "clothings#jackets"

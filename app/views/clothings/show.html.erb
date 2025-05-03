@@ -8,7 +8,6 @@
 <% end %>
 <%= link_to "Redact", edit_clothing_path(@clothing), class: "btn" %>
 
-
 <% if @clothing.image.attached? %>
       <%= image_tag @clothing.image,class: "responsive-image" %>
       <% end %>

@@ -19,6 +19,10 @@ class ClothingsController < ApplicationController
     end
   end
 
+  def admin_page
+    @clothings = Clothing.all
+  end
+
   def new
   @clothing = Clothing.new
   end

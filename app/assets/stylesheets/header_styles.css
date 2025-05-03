@@ -1,7 +1,8 @@
 .cart_style {
+    font-family: 'Parisienne', cursive; /* Шрифт */
     position: absolute;
-    right: 1px; /* Прижимаем к правому краю */
-    bottom: 1px; /*расположение сверху */
+    right: 5px; /* Прижимаем к правому краю */
+    bottom: 5px; /*расположение сверху */
     border: 1px solid black; /* рамка */
     border-radius: 10px;    /* скругление углов */
     padding: 2px; /* отступ внутри */

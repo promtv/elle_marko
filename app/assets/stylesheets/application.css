@@ -35,11 +35,13 @@
     font-family: Arial, sans-serif;
   }
   .btn {
+    font-family: 'Parisienne', cursive;
     display: inline-block;
     padding: 10px 20px;
     background-color: #000000; /* небесно-синий */
     color: white;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
     border-radius: 6px;
     text-decoration: none;
@@ -62,6 +64,7 @@
   }
   .title_wrapper {
     text-align: center;
-    margin-top: -110px;
-    padding-top: 0;
+    margin-top: 20px;
+    padding-top: 0px;
+    margin-bottom: -80px;
   }

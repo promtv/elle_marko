@@ -23,6 +23,7 @@
 
   /* Стили для ссылки */
   .container_category {
+    font-family: 'Parisienne', cursive; /* Шрифт */
     position: absolute; /* Абсолютное позиционирование */
     right: 5px; /* Отступ справа */
     bottom: 5px; /* Отступ снизу */
