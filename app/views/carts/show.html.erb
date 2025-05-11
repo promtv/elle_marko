@@ -1,17 +1,27 @@
-<% price = 0 %>
-<% element = 0 %>
+<% total_price = 0 %>
+<% total_quantity = 0 %>
 
-<% @clothings.each do |clothings, amount| %>
-  <% item_prise = amount * clothings.price %>
-  <% price += item_prise %>
-  <% element += amount %>
+<% @clothings.each do |clothing, amount| %>
+  <% item_price = clothing.price * amount %>
+  <% total_price += item_price %>
+  <% total_quantity += amount %>
 
-  <div class="clothing_conteiner_for_order">
-    <img class="image_of_order" src="<%= clothings.image_url %>" >
-    <%= clothings.name %> (<%= amount %>) = <%= item_prise %>$
+  <div class="clothing_container_for_order">
+    <% if clothing.image.attached? %>
+      <%= image_tag clothing.image, class: "image_of_order" %>
+    <% end %>
+
+    <div class="order_item_info">
+      <strong><%= clothing.name %></strong>
+      (<%= amount %> шт.) = <%= item_price %>$
+    </div>
+
+    <%= button_to "Удалить", remove_clothings_cart_path(clothings_id: clothing.id), method: :delete, class: "btn btn-danger" %>
   </div>
 <% end %>
 
-<div>
-  PRISE (<%=element%>) <%= price %>$
+<hr>
+
+<div class="order_summary">
+  <strong>Итого (<%= total_quantity %> товаров):</strong> <%= total_price %>$
 </div>

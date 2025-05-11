@@ -68,3 +68,12 @@
     padding-top: 0px;
     margin-bottom: -80px;
   }
+  .review_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+  }

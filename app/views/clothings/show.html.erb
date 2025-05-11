@@ -1,20 +1,32 @@
+<%= javascript_importmap_tags "delete_confirm" %>
+<%= javascript_importmap_tags "delete_reviews" %>
+
 <div>
-<%= button_to add_clothings_cart_path(@clothing.id), class:""  do%>
+<%= button_to add_clothings_cart_path(@clothing.id), class:"btn"  do%>
  Add to cart
  <% end %>
+ <p>
 <% if session[:userinfo]&.dig('roles')&.include?('admin') %>
- <%= form_with model: @clothing, method: :delete, local: true do %>
-  <%= submit_tag "Удалить", data: { confirm: "Точно удалить?" }, class: "btn" %>
+ <%= form_with model: @clothing, method: :delete, local: true, html: { id: "delete-clothing-form" } do %>
+  <%= submit_tag "Delete", class: "btn" %> <%= link_to "Redact", edit_clothing_path(@clothing), class: "btn" %>
 <% end %>
-<%= link_to "Redact", edit_clothing_path(@clothing), class: "btn" %>
+<p>
+<% end %>
 
 <% if @clothing.image.attached? %>
-      <%= image_tag @clothing.image,class: "responsive-image" %>
-      <% end %>
+   <%= image_tag @clothing.image,class: "responsive-image" %>
 <% end %>
+
 <div class="clothing-name">
-name: <%= @clothing.name %>
+<%= @clothing.name %>
+<div class="star-rating">
+  <div class="stars-outer">
+    <div class="stars-inner" style="width: <%= (@average_rating.to_f / 5 * 100).round %>%"></div>
+  </div>
+  <span>(<%= @average_rating %>/5)</span>
 </div>
+</div>
+
 <div>
 brand: <%= @clothing.brand %>
 </div>
@@ -32,44 +44,41 @@ description: <%= @clothing.description %>
 </div>
 </div>
 
-<div class="star-rating">
-  <div class="stars-outer">
-    <div class="stars-inner" style="width: <%= (@average_rating.to_f / 5 * 100).round %>%"></div>
-  </div>
-  <span>(<%= @average_rating %>/5)</span>
-</div>
-<h2>Отзывы</h2>
+
+
+<h2>Review</h2>
 <% if session[:userinfo] %>
 <%= form_with(url: clothing_reviews_path(@clothing), model: Review.new, local: true) do |form| %>
   <div>
-    <%= form.label :content, "Отзыв" %><br>
+    <%= form.label :content, "Review" %><br>
     <%= form.text_area :content %>
   </div>
+  
   <div>
-  <div>
-  <%= form.label :rating, "Оценка" %><br>
-  <%= form.select :rating, options_for_select(1..5), prompt: "Выберите оценку" %>
+  <%= form.label :rating, "Stars" %><br>
+  <%= form.select :rating, options_for_select(1..5), prompt: "Stars" %> <%= form.submit "Add review" %>
 </div>
-    <%= form.submit "Оставить отзыв" %>
-  </div>
+   
 <% end %>
 <% else %>
-  <p>Чтобы оставить отзыв, <%= link_to "войдите", "/auth/auth0" %></p>
+  <p>Just login pipol can  <%= link_to "Login", "/auth/auth0" %></p>
 <% end %>
 
 <% @clothing.reviews.each do |review| %>
-  <p>
+  <div class="review_container">
+  <div>
     <strong><%= review.user_name %></strong>
-
     <div class="star-rating">
       <div class="stars-outer">
         <div class="stars-inner" style="width: <%= (review.rating.to_f / 5 * 100).round %>%"></div>
       </div>
-      <span>(<%= review.rating %>/5)</span>
+      <%= review.created_at.strftime("%d-%m-%Y") %>
     </div>
-  </p>
-  <p><%= review.content %></p>
-  <% if session[:userinfo]&.dig('roles')&.include?('admin') %>
-  <%= button_to "Удалить", clothing_review_path(@clothing, review), method: :delete, data: { confirm: "Ты уверен?" } %>
+    
+    <%= form_tag clothing_review_path(@clothing, review), method: :delete, local: true, class: "delete-review-form" do %>
+  <%= submit_tag "Delete", class: "btn" %>
    <% end %>
+  </div>
+  <p><%= review.content %></p>
+  </div>  
 <% end %>

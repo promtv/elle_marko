@@ -1,23 +1,20 @@
-<% if session[:userinfo]&.dig('roles')&.include?('admin') %>
+ <%if session[:userinfo]&.dig('roles')&.include?('admin')%>
  
 <div class="">
 <% @clothings.each do |clothing| %>
   <%= link_to clothing_path(clothing.id) do %>
-    <div class="">
       <div class="clothing_conteiner_for_order">
-       <% if clothing.image.attached? %>
       <%= image_tag clothing.image,class: "image_of_order" %>
-      <% end %>
+
        <div class="clothing-name">
-        <%= clothing.name %> <%= clothing.price%>$
+       <p> <%= clothing.name %> <%= clothing.price%>$
         <%= form_with model: clothing, method: :delete, local: true do %>
-       <%= submit_tag "Удалить", data: { confirm: "Точно удалить?" }, class: "btn" %>
+       <%= submit_tag "Delite", class: "btn" %>
        <%end%>
-       <%= link_to "Redact", edit_clothing_path(clothing), class: "btn" %>
+       <%= link_to "Redact", edit_clothing_path(clothing), class: "btn" %></p>
        </div>
-      </div>
     </div>
     <% end %>
   <% end %>
 </div>
-<% end %>
+<%end%> 
