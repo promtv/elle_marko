@@ -1,5 +1,6 @@
 
-<p><strong>name:</strong> <%= session[:userinfo]["info"]["name"] %></p>
-<p><strong>Email:</strong> <%= session[:userinfo]["info"]["email"] %></p>
+<p><strong>name:</strong> <%= @user["name"] %></p>
+<p><strong>Email:</strong> <%= @user["email"] %></p>
+<h1>Welcome, <%= @user["email"] %></h1>
 
 <%= link_to "Выйти", "/auth/logout" %>

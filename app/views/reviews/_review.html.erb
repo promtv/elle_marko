@@ -1,0 +1,21 @@
+<div class="review_container" style="margin-left: <%= depth * 20 %>px;">
+  <strong><%= review.user_name %></strong>
+  <div class="star-rating">
+    <div class="stars-outer">
+      <div class="stars-inner" style="width: <%= (review.rating.to_f / 5 * 100).round %>%"></div>
+    </div>
+    <%= review.created_at.strftime("%d-%m-%Y") %>
+    <%= link_to "Ответить", "#", data: { reply_to: review.id }, class: "reply-link" %>
+  </div>
+  <p><%= review.content %></p>
+
+  <%# Удаление (если разрешено) %>
+  <%= form_tag clothing_review_path(@clothing, review), method: :delete, local: true, class: "delete-review-form" do %>
+    <%= submit_tag "Удалить", class: "btn" %>
+  <% end %>
+
+  <%# Рекурсивный вызов %>
+  <% review.replies.each do |reply| %>
+    <%= render partial: "reviews/review", locals: { review: reply, depth: depth + 1 } %>
+  <% end %>
+</div>

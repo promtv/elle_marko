@@ -69,8 +69,10 @@ group :test do
   gem "selenium-webdriver"
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "rails-controller-testing"
 end
 
 gem "omniauth-auth0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "image_processing", "~> 1.2"
+gem "stripe"

@@ -1,11 +1,11 @@
 FactoryBot.define do
-  factory :clothings do
+  factory :clothing do
     classification { "t-shirts" }
     brand { "underarmour" }
     name { "Polo UA Matchplay" }
     price { 40 }
-    material { "94 % polyester / 6 % élasthanne" }
-    size { "XL,M,L" }
+    material { "polyester" }
+    size { "L" }
     for_whom { "for_men" }
   end
 end

@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get "payments/create"
   get "/dashboard", to: "dashboard#show"
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
   get "/auth/logout" => "auth0#logout"
   get "/auth/redirect", to: redirect("/auth/auth0")
+  post "payments", to: "payments#create"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

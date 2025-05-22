@@ -22,6 +22,18 @@
 
 <hr>
 
-<div class="order_summary">
-  <strong>Итого (<%= total_quantity %> товаров):</strong> <%= total_price %>$
-</div>
+<!-- app/views/carts/show.html.erb -->
+
+<h2>Корзина</h2>
+
+<% @clothings.each do |clothing, quantity| %>
+  <div>
+    <strong><%= clothing.name %></strong> — <%= quantity %> шт. — $<%= clothing.price * quantity %>
+  </div>
+<% end %>
+
+<p><strong>Итого: $<%= @total_price %></strong></p>
+
+<%= form_with url: payments_path, method: :post do %>
+  <%= submit_tag "Оплатить" %>
+<% end %>

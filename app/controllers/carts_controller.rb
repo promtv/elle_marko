@@ -14,7 +14,12 @@ class CartsController < ApplicationController
   end
 
   def show
-    @clothings = Clothing.where(id: cookies.signed[:cart].keys).map { |clothings| [ clothings, cookies.signed[:cart][clothings.id.to_s] ] }
+    @clothings = Clothing.where(id: cookies.signed[:cart].keys).map do |clothing|
+      quantity = cookies.signed[:cart][clothing.id.to_s]
+      [ clothing, quantity ]
+    end
+
+    @total_price = @clothings.sum { |clothing, quantity| clothing.price * quantity }
   end
   def destroy
     clothings_id = params[:clothings_id]

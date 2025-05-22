@@ -1,5 +1,6 @@
 <%= javascript_importmap_tags "delete_confirm" %>
 <%= javascript_importmap_tags "delete_reviews" %>
+<%= javascript_include_tag "review_replies", defer: true %>
 
 <div>
 <%= button_to add_clothings_cart_path(@clothing.id), class:"btn"  do%>
@@ -46,39 +47,36 @@ description: <%= @clothing.description %>
 
 
 
-<h2>Review</h2>
+<h2>Reviews</h2>
+
 <% if session[:userinfo] %>
-<%= form_with(url: clothing_reviews_path(@clothing), model: Review.new, local: true) do |form| %>
-  <div>
-    <%= form.label :content, "Review" %><br>
-    <%= form.text_area :content %>
-  </div>
-  
-  <div>
-  <%= form.label :rating, "Stars" %><br>
-  <%= form.select :rating, options_for_select(1..5), prompt: "Stars" %> <%= form.submit "Add review" %>
-</div>
-   
-<% end %>
+  <%= form_with(url: clothing_reviews_path(@clothing), model: Review.new, local: true) do |form| %>
+    <div>
+      <%= form.label :content, "Review" %><br>
+      <%= form.text_area :content %>
+    </div>
+
+    <div>
+      <%= form.label :rating, "Stars" %><br>
+      <%= form.select :rating, options_for_select(1..5), prompt: "Stars" %>
+      <%= form.submit "Add review" %>
+    </div>
+  <% end %>
 <% else %>
-  <p>Just login pipol can  <%= link_to "Login", "/auth/auth0" %></p>
+  <p>Only logged in users can comment. <%= link_to "Login", "/auth/auth0" %></p>
 <% end %>
 
-<% @clothing.reviews.each do |review| %>
-  <div class="review_container">
-  <div>
-    <strong><%= review.user_name %></strong>
-    <div class="star-rating">
-      <div class="stars-outer">
-        <div class="stars-inner" style="width: <%= (review.rating.to_f / 5 * 100).round %>%"></div>
-      </div>
-      <%= review.created_at.strftime("%d-%m-%Y") %>
-    </div>
-    
-    <%= form_tag clothing_review_path(@clothing, review), method: :delete, local: true, class: "delete-review-form" do %>
-  <%= submit_tag "Delete", class: "btn" %>
-   <% end %>
-  </div>
-  <p><%= review.content %></p>
-  </div>  
+<%# Отображаем ТОЛЬКО корневые отзывы через partial с рекурсией %>
+<% @clothing.reviews.where(parent_id: nil).each do |review| %>
+  <%= render partial: "reviews/review", locals: { review: review, depth: 0 } %>
 <% end %>
+
+<%# Reply форма %>
+<div id="reply-form" style="display: none;">
+  <%= form_with model: [@clothing, Review.new], local: true do |form| %>
+    <%= form.hidden_field :parent_id %>
+    <%= form.label :content, "Ваш ответ" %><br>
+    <%= form.text_area :content %>
+    <%= form.submit "Ответить" %>
+  <% end %>
+</div>
