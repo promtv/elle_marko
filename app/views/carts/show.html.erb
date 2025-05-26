@@ -24,7 +24,7 @@
 
 <!-- app/views/carts/show.html.erb -->
 
-<h2>Корзина</h2>
+<h2>Cart</h2>
 
 <% @clothings.each do |clothing, quantity| %>
   <div>
@@ -32,8 +32,8 @@
   </div>
 <% end %>
 
-<p><strong>Итого: $<%= @total_price %></strong></p>
+<p><strong>Total $<%= @total_price %></strong></p>
 
 <%= form_with url: payments_path, method: :post do %>
-  <%= submit_tag "Оплатить" %>
+  <%= submit_tag "Bay" %>
 <% end %>

@@ -1,9 +1,8 @@
-require 'rails_helper'  # Подключает конфигурацию RSpec для тестирования Rails-приложения
+require 'rails_helper'
 
-RSpec.describe Clothing, type: :model do  # Определяет блок тестов для модели Clothing
-  # Создаем "subject" — объект Clothing с валидными атрибутами, который будем тестировать
+RSpec.describe Clothing, type: :model do
   subject do
-    described_class.new(  # described_class — это Clothing
+    described_class.new(
       classification: "t-shirts",
       brand: "underarmour",
       name: "Polo UA Matchplay",
@@ -14,16 +13,16 @@ RSpec.describe Clothing, type: :model do  # Определяет блок тес
     )
   end
 
-  context 'with valid attributes' do  # Группа тестов для валидных атрибутов
-    it 'is valid' do               # Описывает конкретный тест: объект должен быть валидным
-      expect(subject).to be_valid  # Проверка: объект Clothing валиден (проходит валидации)
+  context 'with valid attributes' do
+    it 'is valid' do
+      expect(subject).to be_valid
     end
   end
 
-  context 'with negative price' do  # Группа тестов для случая с отрицательной ценой
-    it 'is not valid' do            # Описывает тест: объект не должен быть валидным
-      subject.price = -1            # Меняем цену на отрицательную
-      expect(subject).not_to be_valid  # Проверяем, что объект теперь НЕ валиден
+  context 'with negative price' do
+    it 'is not valid' do
+      subject.price = -1
+      expect(subject).not_to be_valid
     end
   end
 end

@@ -71,7 +71,7 @@ description: <%= @clothing.description %>
   <%= render partial: "reviews/review", locals: { review: review, depth: 0 } %>
 <% end %>
 
-<%# Reply форма %>
+<% if session[:userinfo] %>
 <div id="reply-form" style="display: none;">
   <%= form_with model: [@clothing, Review.new], local: true do |form| %>
     <%= form.hidden_field :parent_id %>
@@ -80,3 +80,6 @@ description: <%= @clothing.description %>
     <%= form.submit "Ответить" %>
   <% end %>
 </div>
+<% else %>
+  <p>Only logged in users can reply to reviews. <%= link_to "Login", "/auth/auth0" %></p>
+<%end%>

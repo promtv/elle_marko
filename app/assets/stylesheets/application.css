@@ -8,6 +8,10 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+ body {
+  font-family: 'Parisienne', cursive;
+  font-size: 25px;
+}
  .star-rating {
     display: inline-block;
     font-size: 1.2em;
@@ -70,10 +74,20 @@
   }
   .review_container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     flex-direction: column;
     margin-top: 20px;
-    border: 1px solid #000000;
+    
+  }
+  .revew_content{
+    border: 0.1px solid #c00000;
     border-radius: 10px;
+    text-align: left;
+    width: 80%;
+    padding: 20px;
+    font-family: 'Parisienne', cursive;
+    font-size: 25px;
+    color: #333333;
+    line-height: 1.6;
   }
