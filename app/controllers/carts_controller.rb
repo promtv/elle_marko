@@ -21,6 +21,7 @@ class CartsController < ApplicationController
 
     @total_price = @clothings.sum { |clothing, quantity| clothing.price * quantity }
   end
+
   def destroy
     clothings_id = params[:clothings_id]
     cart = cookies.signed[:cart] || {}
