@@ -1,30 +1,55 @@
+<% unless params[:category].present?%>
 <div>
-<%= link_to t_shirts_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('t-shirts.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("t_shirts"), class: "background_category", style: "background-image: url(#{asset_path('t-shirts.jpg')}); position: relative;" do %>
   <span class="container_category">T-shirts</span>
 <% end %>
 </div>
 <div>
-<%= link_to headwear_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('headwear.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("headwear"), class: "background_category", style: "background-image: url(#{asset_path('headwear.jpg')}); position: relative;" do %>
   <span class="container_category">Headwear</span>
 <% end %>
 </div>
 <div>
-<%= link_to shoes_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('shoes.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("shoes"), class: "background_category", style: "background-image: url(#{asset_path('shoes.jpg')}); position: relative;" do %>
   <span class="container_category">Shoes</span>
 <% end %>
 </div>
 <div>
-<%= link_to jackets_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('jackets.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("jackets"), class: "background_category", style: "background-image: url(#{asset_path('jackets.jpg')}); position: relative;" do %>
   <span class="container_category">Jackets</span>
 <% end %>
 </div>
 <div>
-<%= link_to sweaters_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('sweaters.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("sweaters"), class: "background_category", style: "background-image: url(#{asset_path('sweaters.jpg')}); position: relative;" do %>
   <span class="container_category">Sweaters</span>
 <% end %>
 </div>
 <div>
-<%= link_to business_suits_clothings_path, class: "background_category", style: "background-image: url(#{asset_path('business_suits.jpg')}); position: relative;" do %>
+<%= link_to category_clothings_path("business_suits"), class: "background_category", style: "background-image: url(#{asset_path('business_suits.jpg')}); position: relative;" do %>
   <span class="container_category">Business Suits</span>
 <% end %>
 </div>
+<%end%>
+
+<% if params[:category].present? %>
+
+<div class="clothing-container">
+<% @clothings.each do |jackets| %>
+  <%= link_to clothing_path(jackets.id) do %>
+    <div class="clothing-item">
+      <div class="responsive-container">
+         <% if jackets.image.attached? %>
+      <%= image_tag jackets.image,class: "responsive-image" %>
+      <% end %>
+       <div class="clothing-name">
+        <%= jackets.name %>
+       </div>
+       <div class="clothing-prise">
+        <%= jackets.price%>$
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+<%end%>

@@ -4,7 +4,18 @@ class ClothingsController < ApplicationController
   before_action :require_admin!, only: [ :destroy, :edit, :update, :create, :new ]
 
   def index
+    @sort_field = %w[price name].include?(params[:sort_by]) ? params[:sort_by] : "price"
+    @sort_order = params[:sort] == "desc" ? "desc" : "asc"
     @clothings = Clothing.all
+
+    if params[:for_whom].present?
+      @clothings = @clothings.where(for_whom: params[:for_whom])
+    end
+    if params[:category].present?
+      @clothings = @clothings.where(classification: params[:category])
+    end
+
+    @clothings = @clothings.order(@sort_field => @sort_order)
   end
 
   def show
@@ -64,52 +75,15 @@ class ClothingsController < ApplicationController
     end
   end
 
-  def t_shirts
-    @t_shirts = Clothing.where(classification: "t-shirts")
+  def category
+    category = params[:category]
+    @clothings = Clothing.where(classification: category)
+
     if params[:for_whom].present?
-      @t_shirts = @t_shirts.where(for_whom: params[:for_whom])
+      @clothings = @clothings.where(for_whom: params[:for_whom])
     end
-  end
 
-  def shoes
-    @shoes = Clothing.where(classification: "shoes")
-    if params[:for_whom].present?
-      @shoes = @shoes.where(for_whom: params[:for_whom])
-    end
-  end
-
-  def jackets
-    @jackets = Clothing.where(classification: "jackets")
-    if params[:for_whom].present?
-      @jackets = @jackets.where(for_whom: params[:for_whom])
-    end
-  end
-
-  def sweaters
-    @sweaters = Clothing.where(classification: "sweaters")
-    if params[:for_whom].present?
-      @sweaters = @sweaters.where(for_whom: params[:for_whom])
-    end
-  end
-
-  def business_suits
-    @business_suits = Clothing.where(classification: "business_suits")
-    if params[:for_whom].present?
-      @business_suits = @business_suits.where(for_whom: params[:for_whom])
-    end
-  end
-
-  def headwear
-   @sort_field = %w[price name].include?(params[:sort_by]) ? params[:sort_by] : "price"
-   @sort_order = params[:sort] == "desc" ? "desc" : "asc"
-
-   @headwear = Clothing.where(classification: "headwear")
-
-   if params[:for_whom].present?
-     @headwear = @headwear.where(for_whom: params[:for_whom])
-   end
-
-   @headwear = @headwear.order(@sort_field => @sort_order)
+    render :index
   end
 
   private

@@ -14,16 +14,11 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "clothings/search", to: "clothings#search", as: :search_clothings
   get "clothings/autocomplete", to: "clothings#autocomplete"
+  get "clothings/:category", to: "clothings#category", as: :category_clothings
   resources :clothings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     resources :reviews, only: [ :create, :destroy ]
     collection do
       get "admin_page", to: "clothings#admin_page"
-      get "t_shirts", to: "clothings#t_shirts"
-      get "shoes", to: "clothings#shoes"
-      get "jackets", to: "clothings#jackets"
-      get "sweaters", to: "clothings#sweaters"
-      get "business_suits", to: "clothings#business_suits"
-      get "headwear", to: "clothings#headwear"
     end
   end
   resource :cart, only: [ :show ] do
