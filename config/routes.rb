@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "clothings/search", to: "clothings#search", as: :search_clothings
   get "clothings/autocomplete", to: "clothings#autocomplete"
-  get "clothings/:category", to: "clothings#category", as: :category_clothings
   resources :clothings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
     resources :reviews, only: [ :create, :destroy ]
     collection do

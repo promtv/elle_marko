@@ -75,17 +75,6 @@ class ClothingsController < ApplicationController
     end
   end
 
-  def category
-    category = params[:category]
-    @clothings = Clothing.where(classification: category)
-
-    if params[:for_whom].present?
-      @clothings = @clothings.where(for_whom: params[:for_whom])
-    end
-
-    render :index
-  end
-
   private
 
   def clothing_params

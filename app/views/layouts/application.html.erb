@@ -64,7 +64,7 @@
   </header>
 <div class="container_for_sidebar_and_main_conteiner ">
   <div class="sidebar">
-  <% if params[:category].present? %>
+  <% if params[:category].present? && action_name == "index"%>
 <div>
 <div><%= link_to "First low prise", clothings_path(sort_by: "price", sort: "asc", category: params[:category], for_whom: params[:for_whom]), class: "sidebar_link_style" %></div>
 <div><%= link_to "First hight prise", clothings_path(sort_by: "price", sort: "desc", category: params[:category], for_whom: params[:for_whom]), class: "sidebar_link_style" %></div>
