@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2025_05_11_200137) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -50,8 +53,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_11_200137) do
     t.string "for_whom", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.check_constraint "classification IN ('headwear','shoes','t-shirts','jackets','sweaters',\n    'business_suits')"
-    t.check_constraint "for_whom IN ('for_men','for_women','unisex')"
+    t.check_constraint "classification::text = ANY (ARRAY['headwear'::character varying::text, 'shoes'::character varying::text, 't-shirts'::character varying::text, 'jackets'::character varying::text, 'sweaters'::character varying::text, 'business_suits'::character varying::text])"
+    t.check_constraint "for_whom::text = ANY (ARRAY['for_men'::character varying::text, 'for_women'::character varying::text, 'unisex'::character varying::text])"
   end
 
   create_table "reviews", force: :cascade do |t|

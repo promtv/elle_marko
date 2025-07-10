@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+    command: bin/rails server -b 0.0.0.0
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/elle_marko_development
+      RAILS_ENV: development
+    volumes:
+      - .:/rails:cached
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: elle_marko_development
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:

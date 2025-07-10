@@ -8,7 +8,7 @@
 # For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=3.3.6
+ARG RUBY_VERSION=3.4.3
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
@@ -16,14 +16,12 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips libpq-dev postgresql-client
+  
 
 # Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/usr/local/bundle" \
-    BUNDLE_WITHOUT="development"
+ENV RAILS_ENV="development" \
+    BUNDLE_PATH="/usr/local/bundle"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
@@ -31,11 +29,15 @@ FROM base AS build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git pkg-config && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential libyaml-dev
+    
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
+RUN gem install bundler -v 2.6.9 && \
+    bundle _2.6.9_ install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile --gemfile
 
@@ -68,5 +70,5 @@ USER 1000:1000
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
-EXPOSE 80
+EXPOSE 3000
 CMD ["./bin/thrust", "./bin/rails", "server"]
